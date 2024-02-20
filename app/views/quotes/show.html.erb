@@ -20,3 +20,5 @@
   <%= turbo_frame_tag LineItemDate.new %>
   <%= render @line_item_dates, quote: @quote %>
 </main>
+
+<%= render "quotes/total", quote: @quote %>

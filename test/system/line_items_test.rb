@@ -29,6 +29,7 @@ class LineItemSystemTest < ApplicationSystemTestCase
     assert_selector "h1", text: "First quote"
     assert_text "Animation"
     assert_text number_to_currency(1234)
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "Updating a line item" do
@@ -45,6 +46,7 @@ class LineItemSystemTest < ApplicationSystemTestCase
 
     assert_text "Capybara article"
     assert_text number_to_currency(1234)
+    assert_text number_to_currency(@quote.total_price)
   end
 
   test "Destroying a line item" do
@@ -60,4 +62,5 @@ class LineItemSystemTest < ApplicationSystemTestCase
       assert_no_text @line_item.name
     end
   end
+  assert_text number_to_currency(@quote.total_price)
 end
