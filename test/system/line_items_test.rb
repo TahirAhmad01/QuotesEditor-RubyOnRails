@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class LineItemSystemTest < ApplicationSystemTestCase
+  # We must include this module to be able to use the
+  # `number_to_currency` method in our test
   include ActionView::Helpers::NumberHelper
 
   setup do
@@ -32,35 +34,32 @@ class LineItemSystemTest < ApplicationSystemTestCase
     assert_text number_to_currency(@quote.total_price)
   end
 
-  test "Updating a line item" do
+  test "Updating a line item date" do
     assert_selector "h1", text: "First quote"
 
-    within "##{dom_id(@line_item)}" do
+    within id: dom_id(@line_item_date, :edit) do
       click_on "Edit"
     end
+
     assert_selector "h1", text: "First quote"
 
-    fill_in "Name", with: "Capybara article"
-    fill_in "Unit price", with: 1234
-    click_on "Update item"
+    fill_in "Date", with: Date.current + 1.day
+    click_on "Update date"
 
-    assert_text "Capybara article"
-    assert_text number_to_currency(1234)
+    assert_text I18n.l(Date.current + 1.day, format: :long)
     assert_text number_to_currency(@quote.total_price)
   end
 
-  test "Destroying a line item" do
-    within "##{dom_id(@line_item_date)}" do
-      assert_text @line_item.name
+  test "Destroying a line item date" do
+    assert_text I18n.l(Date.current, format: :long)
+
+    accept_confirm do
+      within id: dom_id(@line_item_date, :edit) do
+        click_on "Delete"
+      end
     end
 
-    within "##{dom_id(@line_item)}" do
-      click_on "Delete"
-    end
-
-    within "##{dom_id(@line_item_date)}" do
-      assert_no_text @line_item.name
-    end
+    assert_no_text I18n.l(Date.current, format: :long)
+    assert_text number_to_currency(@quote.total_price)
   end
-  assert_text number_to_currency(@quote.total_price)
 end
