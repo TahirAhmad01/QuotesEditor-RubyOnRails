@@ -6,7 +6,7 @@
     <%= link_to "New quote",
                 new_quote_path,
                 class: "btn btn--primary",
-                data: { turbo:true, turbo_stream: true, turbo_frame: dom_id(Quote.new) } %>
+                data: { turbo_frame: dom_id(Quote.new) } %>
   </div>
 
   <%= turbo_frame_tag Quote.new %>
