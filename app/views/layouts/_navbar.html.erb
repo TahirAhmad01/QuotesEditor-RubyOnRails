@@ -9,6 +9,7 @@
     <%= button_to "Sign out",
                   destroy_user_session_path,
                   method: :delete,
+                  form: { data: { turbo_confirm: "Are you sure?" } },
                   class: "btn btn--dark" %>
   <% else %>
     <%= link_to "Sign in",
