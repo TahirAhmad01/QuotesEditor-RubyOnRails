@@ -3,5 +3,6 @@
 set -o errexit
 
 bundle install
+yarn install --force
 bundle exec rails assets:precompile
 bundle exec rails assets:clean
