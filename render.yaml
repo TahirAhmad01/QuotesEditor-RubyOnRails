@@ -1,12 +1,12 @@
 databases:
-  - name: QuoteEditor
+  - name: QuotesEditorDB
     databaseName: quotes_editor_ruby_on_rails_production
-    user: mysite
+    user: tahirAhmad
     plan: free
 
 services:
   - type: web
-    name: mysite
+    name: QuotesEditorWeb
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
