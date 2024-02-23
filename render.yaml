@@ -1,7 +1,7 @@
 databases:
   - name: quotes_editor_db
     databaseName: quotes_editor_ruby_on_rails_production
-    user: quotes_editor
+    user: mysite
     plan: free
 
 services:
