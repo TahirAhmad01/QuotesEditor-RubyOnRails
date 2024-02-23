@@ -1,7 +1,7 @@
 databases:
   - name: QuotesEditorDB
     databaseName: quotes_editor_ruby_on_rails_production
-    user: tahirAhmad
+    user: quteseditor
     plan: free
 
 services:
